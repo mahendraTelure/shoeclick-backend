@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jalatechnologies.JalaMagnus.Model.Employee;
+import com.jalatechnologies.JalaMagnus.Model.Search;
 import com.jalatechnologies.JalaMagnus.Repository.EmployeeRepository;
 import com.jalatechnologies.JalaMagnus.exceptions.ResourceNotFoundException;
 
@@ -33,11 +34,29 @@ public class EmployeeController {
 	public List<Employee> getEmp() {
 		return employeeRepository.findAll();
 	}
+	
+	@PostMapping("/search")
+	public List<Employee> searchEmployee(@RequestBody Search search) {
+		
+		if (search.getFirstName().trim() != null  && search.getMobile() == null) {			
+			return employeeRepository.findByFirstNameContaining(search.getFirstName());
+		}else if (search.getFirstName().trim() == null  && search.getMobile() != null) {
+			return employeeRepository.findByMobileContaining(search.getMobile());
+		}else if (search.getFirstName().trim() != null  && search.getMobile() != null) {
+			return employeeRepository.findByFirstNameContainingAndMobileContaining(search.getFirstName(), search.getMobile());
+		}
+		return null;
 
+	}
+
+
+	
+	
 	@PostMapping("/emp")
 	public Employee createEmployee(@RequestBody Employee employee) {
 		return employeeRepository.save(employee);
 	}
+	
 
 	@GetMapping("/emp/{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId)

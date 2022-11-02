@@ -20,7 +20,46 @@ public class Employee {
 	String firstName, lastName, email, address, country, city, gender;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	Date dateOfBirth;
-	long mobile;
+	String mobile;
+	
+	String aws,devOps, fullStackDeveloper, middleware, webServices, qaAutomation;
+	
+	public String getAws() {
+		return aws;
+	}
+	public void setAws(String aws) {
+		this.aws = aws;
+	}
+	public String getDevOps() {
+		return devOps;
+	}
+	public void setDevOps(String devOps) {
+		this.devOps = devOps;
+	}
+	public String getFullStackDeveloper() {
+		return fullStackDeveloper;
+	}
+	public void setFullStackDeveloper(String fullStackDeveloper) {
+		this.fullStackDeveloper = fullStackDeveloper;
+	}
+	public String getMiddleware() {
+		return middleware;
+	}
+	public void setMiddleware(String middleware) {
+		this.middleware = middleware;
+	}
+	public String getWebServices() {
+		return webServices;
+	}
+	public void setWebServices(String webServices) {
+		this.webServices = webServices;
+	}
+	public String getQaAutomation() {
+		return qaAutomation;
+	}
+	public void setQaAutomation(String qaAutomation) {
+		this.qaAutomation = qaAutomation;
+	}
 	public long getId() {
 		return id;
 	}
@@ -75,10 +114,10 @@ public class Employee {
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-	public long getMobile() {
+	public String getMobile() {
 		return mobile;
 	}
-	public void setMobile(long mobile) {
+	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
 	

@@ -60,7 +60,7 @@ public class AuthenticateController {
 		} catch (DisabledException e) {
 			throw new Exception("USER DISABLED " + e.getMessage());
 		} catch (BadCredentialsException e) {
-			throw new Exception("Invalid credentials " + e.getMessage());
+			throw new Exception("Invalid credentials or " + e.getMessage());
 		}
 	}
 	

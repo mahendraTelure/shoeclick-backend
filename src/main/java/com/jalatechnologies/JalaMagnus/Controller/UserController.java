@@ -21,11 +21,13 @@ public class UserController {
 	@Autowired
 	UserRepository userRepository;
 	
+//	getting all users
 	@GetMapping("/user")
 	public List<User> getEmp(){
 		return userRepository.findAll();
 	}
 
+//	adding user to the database
 	@PostMapping("/user")
 	public User createEmployee(@RequestBody User employee) {
 		return userRepository.save(employee);

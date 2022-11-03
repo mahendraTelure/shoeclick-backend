@@ -12,6 +12,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 public class User implements UserDetails{
+	
+//	user table
+//	fields of user
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	long id;

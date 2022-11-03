@@ -3,6 +3,7 @@ package com.jalatechnologies.JalaMagnus.exceptions;
 import java.util.Date;
 
 public class ErrorDetails {
+//	body for error details
 	private Date timestamp;
 	private String message;
 	private String details;

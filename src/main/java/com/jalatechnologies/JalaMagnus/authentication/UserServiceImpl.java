@@ -13,12 +13,12 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserRepository userRepository;
 	
-
+//	implemented method for getting user by username
 	public User getbyUsername(String username) {
 		return this.userRepository.findByUsername(username);
 	}
 
-
+//	implemented method for deleting user by id
 	public HttpStatus deleteById(Long id) {
 		this.userRepository.deleteById(id);
 		return HttpStatus.OK;

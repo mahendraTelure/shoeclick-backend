@@ -8,5 +8,6 @@ import com.jalatechnologies.JalaMagnus.Model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 	
+//	find user by username
 	public User findByUsername(String username);
 }

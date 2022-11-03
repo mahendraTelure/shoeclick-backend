@@ -5,6 +5,7 @@ import javax.persistence.Table;
 
 public class Search {
 	
+//	search request body
 	String firstName;
 	String mobile;
 	

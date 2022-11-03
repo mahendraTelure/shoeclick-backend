@@ -41,13 +41,16 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 		return NoOpPasswordEncoder.getInstance();
 	}
 
+//	configuring the security 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+//		applying security on the all end-points except - login and user
 		http.csrf().disable().cors().disable().authorizeRequests().antMatchers("/jala/api/v1/login", "/jala/api/v1/user").permitAll()
 				.antMatchers(HttpMethod.OPTIONS).permitAll().anyRequest().authenticated().and().exceptionHandling()
 				.authenticationEntryPoint(unauthorizedHandler).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
+//		adding filter to authentication
 		http.addFilterBefore(jwtAuthenticationFIlter, UsernamePasswordAuthenticationFilter.class);
 	}
 

@@ -17,22 +17,28 @@ public class JwtUtil {
 
     private String SECRET_KEY = "quizPortal";
 
+//    extracting username from token
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
-
+      
+//    extract expiration form the token
     public Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }
 
+//    extracting the claim from the token
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
+    
+//    extracting the all claims from the token
     private Claims extractAllClaims(String token) {
         return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
     }
 
+//    validating the token is expired or not
     private Boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
@@ -42,6 +48,7 @@ public class JwtUtil {
         return createToken(claims, userDetails.getUsername());
     }
 
+//    generating the token
     private String createToken(Map<String, Object> claims, String subject) {
 
         return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
@@ -49,6 +56,7 @@ public class JwtUtil {
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY).compact();
     }
 
+//    validating the token
     public Boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));

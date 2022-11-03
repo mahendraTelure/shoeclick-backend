@@ -1,6 +1,9 @@
 package com.jalatechnologies.JalaMagnus.authentication;
 
 public class JwtResponse {
+	
+//	JWT response body
+	
 	String token;
 
 	public JwtResponse(String token) {

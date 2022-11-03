@@ -1,6 +1,9 @@
 package com.jalatechnologies.JalaMagnus.authentication;
 
 public class JwtRequest {
+	
+//	JWT request body
+	
 	String username;
 	String password;
 

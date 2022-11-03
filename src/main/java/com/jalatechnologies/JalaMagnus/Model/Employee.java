@@ -14,6 +14,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Employee {
 
+//	id is auto generated of employee
+//	and other details of emplyee
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	long id;
@@ -21,9 +23,9 @@ public class Employee {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	Date dateOfBirth;
 	String mobile;
-	
 	String aws,devOps, fullStackDeveloper, middleware, webServices, qaAutomation;
 	
+//	getters and setters for employee  details
 	public String getAws() {
 		return aws;
 	}
